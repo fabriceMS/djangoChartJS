@@ -1,18 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p> This is a sample paragraph</p>
-<p>
-  <p>
-    {{ srv_time }}
-  </p>
+<p> This is a test of chartJS</p>
+
+
+  
+  <div class="row content">
+    
+    <div class="col-sm-6">
+      <canvas id="pie-chart" style="width: 50px; height: 25px"></canvas>
+      
+  
+    </div>
+    <div class="col-sm-6">
+       <canvas id="bar-chart" width="800" height="450"></canvas>
+  
+    </div>
+  </div>
+  
 
 
 
 
-<canvas id="pie-chart" style="width: 50px; height: 25px"></canvas>
 
-<canvas id="bar-chart" width="800" height="450"></canvas>
+
+
+
+
 
 
 <script>
