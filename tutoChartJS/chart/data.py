@@ -1,18 +1,34 @@
 import os
 import pandas as pd
+from datetime import datetime, timedelta
 
 
-#get data from CSV file
+# Global variable
 PIE_PATH="/Users/fabrice/Documents/chartJS/tutoChartJS/chart/datas"
 
-def get_pie_data(path=PIE_PATH, filename="sample-pie-data.csv"):
+
+# Get Pie data
+def get_data(path=PIE_PATH, filename="sample-pie-data.csv", separator=','):
     csv_path = os.path.join(path, filename)
     
-    return pd.read_csv(csv_path)
+    return pd.read_csv(csv_path, sep=separator)
 
 
+
+
+
+
+#####################
+#       MAIN        #
+#####################
 if __name__ == "__main__":
-    data = get_pie_data()
+    data = get_data(filename='sample-bar-data.csv', separator=";")
     print(data.head())
 
-    print(type(data["Value"]))
+    # Convert the Date field into a python DateTime and sort it (instead of string)
+    data['Date'] = pd.to_datetime(data['Date'])
+    data.sort_values('Date', inplace=True)
+
+    print (data["HTTP server time"].tolist())
+
+    #print(data['Nombre total de transactions'].str.replace(',', '.').astype(float))
